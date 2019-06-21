@@ -17,6 +17,8 @@ import Select from 'rc-select';
 import 'rc-select/assets/index.css';
 import {isMobile} from 'react-device-detect';
 
+import { AddFavoritos } from '../utiles';
+
 // Redux
 import { connect } from 'react-redux';
 import { getMoviePopular, getMovieReviews } from '../redux/actions/parametersActions';
@@ -67,10 +69,20 @@ class Home extends Component {
         },{
             dataField: 'title',
             text: 'Título',
-            sort: true,
+            sort: false,
             
             headerStyle: (colum, colIndex) => {
             return { width: '300px', textAlign: 'left' };
+            },
+            style: { 'whiteSpace': 'wrap',
+            "verticalAlign": "middle"}
+        }, {
+            dataField: 'release_date',
+            text: 'Publicada',
+            sort: false,
+            
+            headerStyle: (colum, colIndex) => {
+            return { width: '100px', textAlign: 'left' };
             },
             style: { 'whiteSpace': 'wrap',
             "verticalAlign": "middle"}
@@ -99,9 +111,15 @@ class Home extends Component {
                             <ButtonGroup size="sm">
                                 <Button data-for={"btnViewMovie_" + row.id} data-tip={"Ver película" +  row.title}  color="primary" onClick={(e) => { 
                                     
+                                    const movie = this.state.movies.filter((item) => {
+                                        if(item.id === row.id) return item;
+                                        return false;
+                                    });
+
                                     this.props.history.push({
-                                         pathname: '/About',
-                                         search: '?movieId=' + row.id
+                                         pathname: '/Details',
+                                         search: '?movieId=' + row.id,
+                                         state: { movie: movie[0] }
                                     });
                                 
                                 } } >
@@ -109,7 +127,13 @@ class Home extends Component {
                                 </Button>
 
                                 <Button data-for={"btnAddFav_" + row.id} data-tip={"Agregar a favoritos " +  row.title} color="warning" onClick={(e) => { 
-                                    //this.onClick_CopyJobOffer(row);
+                                    
+                                    const movie = this.state.movies.filter((item) => {
+                                        if(item.id === row.id) return item;
+                                        return false;
+                                    });
+
+                                    AddFavoritos(movie[0]);
                                 } } >
                                     Favorito
                                 </Button>
@@ -306,29 +330,31 @@ class Home extends Component {
             <Row className="mb-2">
                 <Col>
                     <Card>
-                        <BootstrapTable
-                            id="mapping_table"
-                            striped
-                            hover
-                            condensed
-                            bootstrap4
-                            remote
-                        
-                            ref={ n => this.node = n }
-                        
-                            keyField='id'
-                            //caption="Plain text header"
-                            noDataIndication={ 
-                                () =>
-                                <strong>Buscado medias...</strong>
-                            }
-                            data={ this.state.movies } 
+                        <CardBody>
+                            <BootstrapTable
+                                id="mapping_table"
+                                striped
+                                hover
+                                condensed
+                                bootstrap4
+                                remote
                             
-                            columns={ this.columnsGridJobsOffers } 
+                                ref={ n => this.node = n }
+                            
+                                keyField='id'
+                                //caption="Plain text header"
+                                noDataIndication={ 
+                                    () =>
+                                    <strong>Buscado medias...</strong>
+                                }
+                                data={ this.state.movies } 
+                                
+                                columns={ this.columnsGridJobsOffers } 
 
-                            onTableChange={ this.handleTableChange }
-                        ></BootstrapTable>
-                         {customPaginator(this.handlePageChange, this.state.pageNumber, 20, this.state.totalRegister)}
+                                onTableChange={ this.handleTableChange }
+                            ></BootstrapTable>
+                            {customPaginator(this.handlePageChange, this.state.pageNumber, 20, this.state.totalRegister)}
+                         </CardBody>
                     </Card>
                 </Col>
             </Row>

@@ -19,7 +19,7 @@ export const getMoviePopular = ({page = 1}) => async dispatch => {
             });
             
         }).catch(error => {
-            console.log(error);
+            //console.log(error);
 
             const infoError = { 
                 error : true,
@@ -41,11 +41,11 @@ export const getMovieReviews = ({movieId = null, page = 1}) => async dispatch =>
 
     await axios.get(webConfig.urlBaseAPI + `movie/${movieId}/reviews?api_key=${webConfig.apiKey}&language=en-US&page=${page}`)
         .then(response => {
-            console.log(response);
+            //console.log(response);
             
             dispatch({
                 type: GET_MOVIE_REVIEWS,
-                payload: response
+                payload: response.data
             });
             
         }).catch(error => {

@@ -18,7 +18,7 @@ export default function (state = initialState, action) {
                 ...state,
                 moviePolular: action.payload
             }
-        case GET_MOVIE_POPULAR:
+        case GET_MOVIE_REVIEWS:
          
             return {
                 ...state,

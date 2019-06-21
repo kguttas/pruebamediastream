@@ -22,8 +22,8 @@ const Home = Loadable({
     loading
 });
 
-const About = Loadable({
-    loader: () => import('./components/About'),
+const Details = Loadable({
+    loader: () => import('./components/Details'),
     loading
 });
 
@@ -41,15 +41,13 @@ class App extends React.Component {
 			<Container fluid>
 			<Nav>
               <NavItem>
-                <NavLink href="/#/">Home</NavLink>
+                <NavLink href="/#/">Inicio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/#/About">About</NavLink>
+                <NavLink href="/#/Favorites">Favoritos</NavLink>
               </NavItem>
             </Nav>
-			<Button color="success" onClick={(e) => {
-                                    
-                                }}>Actualizar</Button>
+			
 			<HashRouter>
 				<Switch>
 					<Route exact path="/" name="Home" 
@@ -61,7 +59,7 @@ class App extends React.Component {
 							></Home>
 						)
 					}} />
-					<Route exact path="/About" name="About" component={About} />
+					<Route exact path="/Details" name="Details" component={Details} />
 					{/* <Route exact path="/validarEmail" name="validarEmail" component={Home} />
 					<Route exact path={urlChangePassword} name="validarEmail" component={Home} />
 					<Route exact path={urlRecoveryPassword} name="validarEmail" component={Home} />
