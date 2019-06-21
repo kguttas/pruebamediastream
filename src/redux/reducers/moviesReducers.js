@@ -1,4 +1,4 @@
-import { 
+ import { 
     GET_MOVIE_POPULAR,
     GET_MOVIE_REVIEWS
 } from '../actions/types';

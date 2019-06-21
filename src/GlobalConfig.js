@@ -1,3 +1,4 @@
+// Variables globales
 export const webConfig = {
     
     urlBaseAPI: "https://api.themoviedb.org/3/",

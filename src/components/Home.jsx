@@ -13,7 +13,7 @@ import { AddFavoritos } from '../utiles';
 
 // Redux
 import { connect } from 'react-redux';
-import { getMoviePopular, getMovieReviews } from '../redux/actions/parametersActions';
+import { getMoviePopular, getMovieReviews } from '../redux/actions/moviesActions';
 
 
 class Home extends Component {
@@ -41,25 +41,16 @@ class Home extends Component {
                 textAlign: "center"
             },
             formatter: (cellContent, row) => {
-                
-                
-
                 return(
-                    
                     <Row className="justify-content-center align-items-center"> 
-                        
-                            <img src={`https://image.tmdb.org/t/p/w500/${row.poster_path}`} alt={`${row.title}`}  width="72"></img>
-                        
+                        <img src={`https://image.tmdb.org/t/p/w500/${row.poster_path}`} alt={`${row.title}`}  width="72"></img> 
                     </Row>
                 );
-                
             }
-           
         },{
             dataField: 'title',
             text: 'Título',
             sort: false,
-            
             headerStyle: (colum, colIndex) => {
             return { width: '300px', textAlign: 'left' };
             },
@@ -126,16 +117,10 @@ class Home extends Component {
                                 } } >
                                     Favorito
                                 </Button>
-                                
-                                
-
-                                
                             </ButtonGroup>
                         </ButtonToolbar>
-                    
                     </Row>
                 );
-                
             }
         }];
      

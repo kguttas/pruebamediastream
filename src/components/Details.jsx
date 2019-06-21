@@ -10,7 +10,7 @@ import {
 import Paginator from './Paginator';
     // Redux
 import { connect } from 'react-redux';
-import { getMovieReviews } from '../redux/actions/parametersActions';
+import { getMovieReviews } from '../redux/actions/moviesActions';
 import { isIterable } from 'core-js';
 
 class Details extends Component {

@@ -8,7 +8,7 @@ import './App.scss';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
-// Components
+// Loader de Components
 const loading = () => 
 <div className="container d-flex justify-content-center" style={{height:"100vh"}}>
     <div className="my-auto">
@@ -16,7 +16,7 @@ const loading = () =>
     </div>
 </div>
 
-// Home
+// Componentes
 const Home = Loadable({
     loader: () => import('./components/Home'),
     loading
@@ -35,12 +35,13 @@ const Favorites = Loadable({
 class App extends React.Component {
 
 	render(){
+		console.log(this.props.history);
 		return (
 		<Provider store={store}>
-			<Container fluid>
-			<Nav>
+			<Container>
+			<Nav pills>
               <NavItem>
-                <NavLink href="/#/">Inicio</NavLink>
+                <NavLink href="/#/" >Inicio</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/#/Favorites">Favoritos</NavLink>
@@ -58,6 +59,7 @@ class App extends React.Component {
 							></Home>
 						)
 					}} />
+					
 					<Route exact path="/Details" name="Details" component={Details} />
 					<Route exact path="/Favorites" name="Favorites" component={Favorites} />
 					{/* <Route exact path="/validarEmail" name="validarEmail" component={Home} />
