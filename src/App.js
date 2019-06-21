@@ -68,38 +68,7 @@ class App extends React.Component {
 					
 					<Route exact path="/Details" name="Details" component={Details} />
 					<Route exact path="/Favorites" name="Favorites" component={Favorites} />
-					{/* <Route exact path="/validarEmail" name="validarEmail" component={Home} />
-					<Route exact path={urlChangePassword} name="validarEmail" component={Home} />
-					<Route exact path={urlRecoveryPassword} name="validarEmail" component={Home} />
-					<Route exact path="/login/postulante" name="Home" component={LoginPostulant} />
-					<Route exact path="/login/empleador" name="Home" component={LoginEmployer} />
-					<Route exact path="/registrarse/*" name="Home" component={Home} />
-					<Route exact path="/area/postulante/*" name="Postulante" component={DefaultLayoutPostulant} />
-					<Route exact path="/area/empleador/*" name="Empleador" component={DefaultLayoutEmployer} />
-					<Route exact path="/error" component={Error}></Route>
-					<Redirect to="/error"></Redirect> */}
-					{/*<Route exact path="/" component={Home}>
-					</Route>
-					<Route exact path="/login" component={Login}>
-					</Route>
-					<Route exact path="/registrarse" component={Register}>
-					</Route>
 					
-					<PrivateRoute exact path="/register" component={Register} ></PrivateRoute>
-					*/}
-						{/*  
-					<Route exact path="/registrarse/postulante" component={RegisterPostulant}>
-					</Route>*/}
-					{/* 
-					<PrivateRoute exact path="/area/postulante" component={AreaPostulant} ></PrivateRoute>
-					
-					<Route exact path="/area/postulante" component={AreaPostulant}></Route>*/}
-					{/*
-					<PrivateRoute exact path="/registrarse/postulante" component={RegisterPostulant} ></PrivateRoute>
-					
-					<Route exact path="/registrarse/empleador" component={RegisterCompany}>
-					</Route>
-					*/}
 				</Switch>
 		</HashRouter>
 		</Container>
