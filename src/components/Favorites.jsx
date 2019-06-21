@@ -15,7 +15,7 @@ export default class Favorites extends Component {
     }
 
     componentDidMount(){
-        console.log( GetFavoritos());
+        
         this.setState({favoritos: GetFavoritos() || []});
     }
 
