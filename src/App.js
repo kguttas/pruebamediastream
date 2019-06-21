@@ -1,8 +1,8 @@
 import React  from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Spinner from "react-spinkit";
-import { Button, Card, CardBody, CardHeader, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink , Container} from 'reactstrap';
+import { Nav, NavItem, NavLink , Container} from 'reactstrap';
 import './App.scss';
 // Redux
 import { Provider } from 'react-redux';
@@ -33,12 +33,6 @@ const Favorites = Loadable({
 });
 
 class App extends React.Component {
-	
-
-	constructor(props, context) {
-		super(props, context);
-
-	}
 
 	render(){
 		return (

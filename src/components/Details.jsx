@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
-import queryString from 'query-string';
-import {  ButtonGroup,
-    ButtonToolbar,Button, Col, Row, Card, CardBody, CardHeader, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink , Container,ListGroup, ListGroupItem } from 'reactstrap';
 
+import {  
+    Col, 
+    Row, 
+    Card, 
+    CardBody, 
+    ListGroup, 
+    ListGroupItem } from 'reactstrap';
+import Paginator from './Paginator';
     // Redux
 import { connect } from 'react-redux';
 import { getMovieReviews } from '../redux/actions/parametersActions';
@@ -15,8 +20,13 @@ class Details extends Component {
         
         this.state ={
             movie: null,
-            movieReviews: null
+            movieReviews: null,
+
+            pageNumber: 1,
+            totalRegister: 0
         }
+
+        this.handlePageChange = this.handlePageChange.bind(this);
     }
     
     componentWillReceiveProps(nextProps, nextContext){
@@ -24,9 +34,9 @@ class Details extends Component {
         const { movieReviews } = nextProps;
 
         if(this.props.movieReviews !== movieReviews){
-            //console.log(movieReviews.results);
+           
             this.setState({movieReviews: movieReviews.results, totalRegister: movieReviews.total_results, error: movieReviews.error });
-            //this.props.passDataService(moviePolular);
+          
         }
     }
 
@@ -44,17 +54,15 @@ class Details extends Component {
             this.props.getMovieReviews({movieId: movie.id, page: 1});
         }
 
-        
-        /*if(this.props.history.location){
-            if(this.props.history.location.search){
+    }
 
-                const values = queryString.parse(this.props.location.search);
+    handlePageChange(pageNumber, pageSize) {
+       
+        this.setState({
+            pageNumber
+        });
 
-                if(values.movieId){
-                    this.setState({ movieId: values.movieId });
-                }
-            }
-        }*/
+        this.props.getMovieReviews({ movieId: this.state.movie.id, page: pageNumber});
     }
 
     render() {
@@ -84,7 +92,7 @@ class Details extends Component {
                                             <Col>
                                                 {
                                                     
-                                                    movieReviews ? 
+                                                    isIterable(movieReviews) && movieReviews.length > 0 ? 
                                                     <>
                                                         <strong>Reviews</strong><br></br>
                                                         <ListGroup>
@@ -99,6 +107,12 @@ class Details extends Component {
                                                             ))
                                                         }
                                                         </ListGroup>
+                                                        <Paginator
+                                                            handleSizePageChange={null}
+                                                            handlePageChange={this.handlePageChange}
+                                                            pageNumber={this.state.pageNumber}
+                                                            totalRegister={this.state.totalRegister}
+                                                        ></Paginator>
                                                     </>
                                                     
                                                     : null
