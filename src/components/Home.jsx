@@ -5,7 +5,7 @@ import Paginator from './Paginator';
 
 // Redux
 import { connect } from 'react-redux';
-import { getMoviePopular, getMovieReviews } from '../redux/actions/moviesActions';
+import { getMoviePopular } from '../redux/actions/moviesActions';
 
 
 class Home extends Component { 
@@ -78,12 +78,10 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-    moviePolular: state.parameters.moviePolular,
-    movieReviews: state.parameters.movieReviews,
+    moviePolular: state.parameters.moviePolular
 });
 
 
 export default connect(mapStateToProps, { 
-    getMoviePopular,
-    getMovieReviews
+    getMoviePopular
 })(Home);
