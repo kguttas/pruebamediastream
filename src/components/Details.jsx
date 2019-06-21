@@ -8,6 +8,7 @@ import {
     ListGroup, 
     ListGroupItem } from 'reactstrap';
 import Paginator from './Paginator';
+import {webConfig} from '../GlobalConfig';
     // Redux
 import { connect } from 'react-redux';
 import { getMovieReviews } from '../redux/actions/moviesActions';
@@ -78,7 +79,7 @@ class Details extends Component {
                                 <Card>
                                     <CardBody>
                                         <Row className="ml-0">    
-                                            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={`${movie.title}`}  width="92"></img>
+                                            <img src={webConfig.imageMovie +`${movie.poster_path}`} alt={`${movie.title}`}  width="92"></img>
                                         </Row>
                                         <Row>
                                             <Col>

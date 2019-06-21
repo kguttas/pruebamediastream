@@ -7,6 +7,8 @@ import { AddFavoritos } from '../utiles';
 import SimpleBar from 'simplebar-react';// or "import SimpleBar from 'simplebar';" if you want to use it manually.
 import 'simplebar/dist/simplebar.css';
 import '../css/simpleBar.css';
+import {webConfig} from '../GlobalConfig';
+
 export default class GridView extends Component {
 
     columnsGridJobsOffers = [
@@ -34,7 +36,7 @@ export default class GridView extends Component {
             formatter: (cellContent, row) => {
                 return(
                     <Row className="justify-content-center align-items-center"> 
-                        <img src={`https://image.tmdb.org/t/p/w500/${row.poster_path}`} alt={`${row.title}`}  width="72"></img> 
+                        <img src={ webConfig.imageMovie + `${row.poster_path}`} alt={`${row.title}`}  width="72"></img> 
                     </Row>
                 );
             }
