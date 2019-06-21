@@ -27,6 +27,11 @@ const Details = Loadable({
     loading
 });
 
+const Favorites = Loadable({
+    loader: () => import('./components/Favorites'),
+    loading
+});
+
 class App extends React.Component {
 	
 
@@ -60,6 +65,7 @@ class App extends React.Component {
 						)
 					}} />
 					<Route exact path="/Details" name="Details" component={Details} />
+					<Route exact path="/Favorites" name="Favorites" component={Favorites} />
 					{/* <Route exact path="/validarEmail" name="validarEmail" component={Home} />
 					<Route exact path={urlChangePassword} name="validarEmail" component={Home} />
 					<Route exact path={urlRecoveryPassword} name="validarEmail" component={Home} />
