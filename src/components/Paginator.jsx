@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { Component} from 'react';
 import {isMobile} from 'react-device-detect';
-import {  Col, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import Pagination from 'rc-pagination';
-
 import 'rc-pagination/assets/index.css';
-
 import '../css/rc-pagination.css';
-
 import Select from 'rc-select';
-
 import 'rc-select/assets/index.css';
-const Paginator = (props) => {
-    
 
-    const customPaginator = (handlePageChange, pageNumber, pageSize, total) => {
+class Paginator extends Component {
 
-        const arrowPath = 'M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h' +
-        '-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v' +
-        '60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91' +
-        '.5c1.9 0 3.8-0.7 5.2-2L869 536.2c14.7-12.8 14.7-35.6 0-48.4z';
+    constructor(props) {
+        super(props);
+        
+        this.customPaginator = this.customPaginator.bind(this);
+    }
+
+    customPaginator = (handlePageChange, pageNumber, pageSize, total) => {
+
+        const arrowPath = "M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h" +
+        "-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v" +
+        "60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91" +
+        ".5c1.9 0 3.8-0.7 5.2-2L869 536.2c14.7-12.8 14.7-35.6 0-48.4z";
 
         const doublePath = [
         'M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6' +
@@ -82,7 +84,7 @@ const Paginator = (props) => {
                         <div className="d-flex justify-content-center justify-content-lg-end">
                             <Pagination 
                                 onChange={handlePageChange} 
-                                onShowSizeChange={props.handleSizePageChange}
+                                onShowSizeChange={this.props.handleSizePageChange}
                                 current={pageNumber} 
                                 total={total} 
                                 pageSize={pageSize}
@@ -106,7 +108,7 @@ const Paginator = (props) => {
                     <div className="d-flex justify-content-center justify-content-lg-end">
                         <Pagination 
                             onChange={handlePageChange} 
-                            onShowSizeChange={props.handleSizePageChange}
+                            onShowSizeChange={this.props.handleSizePageChange}
                             current={pageNumber} 
                             total={total} 
                             pageSizeOptions={["5","10","20","30","40","50"]}
@@ -147,12 +149,14 @@ const Paginator = (props) => {
         );
     }
 
+    render(){
 
-    return(
-<>
-       {customPaginator(props.handlePageChange, props.pageNumber, 20, props.totalRegister)}
-</>
-    )
+        return(
+            <>
+            {this.customPaginator(this.props.handlePageChange, this.props.pageNumber, 20, this.props.totalRegister)}
+            </>
+         )
+    }
 
 };
 

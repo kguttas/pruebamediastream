@@ -82,6 +82,42 @@ class Details extends Component {
                                         </Row>
                                         <Row>
                                             <Col>
+                                                <h5>
+                                                    
+                                                    {movie.title}
+                                                </h5>
+                                                <h6>
+                                                    
+                                                    {movie.original_title}
+                                                </h6>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                            <p className="text-justify" style={{whiteSpace: "pre-wrap"}}>
+                                                <strong>Puntaje</strong><br></br>
+                                                {movie.vote_average}
+                                            </p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                            <p className="text-justify" style={{whiteSpace: "pre-wrap"}}>
+                                                <strong>Popularidad</strong><br></br>
+                                                {movie.popularity}
+                                            </p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                            <p className="text-justify" style={{whiteSpace: "pre-wrap"}}>
+                                                <strong>Fecha</strong><br></br>
+                                                {movie.release_date}
+                                            </p>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
                                             <p className="text-justify" style={{whiteSpace: "pre-wrap"}}>
                                                 <strong>Descripción</strong><br></br>
                                                 {movie.overview}

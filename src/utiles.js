@@ -9,7 +9,7 @@ export function AddFavoritos(value){
         for(let i = 0; i < favoritos.length; i++){
             if(favoritos[i].id === value.id){
                 exists = true;
-                console.log("existe");
+                
                 break;
             }
         }

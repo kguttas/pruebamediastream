@@ -2,7 +2,7 @@ import React  from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Spinner from "react-spinkit";
-import { Nav, NavItem, NavLink , Container} from 'reactstrap';
+import { Nav, NavItem, NavLink , Container, Row, Col} from 'reactstrap';
 import './App.scss';
 // Redux
 import { Provider } from 'react-redux';
@@ -35,19 +35,25 @@ const Favorites = Loadable({
 class App extends React.Component {
 
 	render(){
-		console.log(this.props.history);
+		
 		return (
 		<Provider store={store}>
 			<Container>
-			<Nav pills>
-              <NavItem>
-                <NavLink href="/#/" >Inicio</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/#/Favorites">Favoritos</NavLink>
-              </NavItem>
-            </Nav>
 			
+			<Row>
+				<Col xs="12">
+					<div className="p-3 mb-2 bg-gray-100 text-black border border-info rounded">
+						<Nav pills>
+							<NavItem>
+								<NavLink href="/#/" >Inicio</NavLink>
+							</NavItem>
+							<NavItem>
+								<NavLink href="/#/Favorites" >Favoritos</NavLink>
+							</NavItem>
+						</Nav>
+					</div>
+				</Col>
+			</Row>
 			<HashRouter>
 				<Switch>
 					<Route exact path="/" name="Home" 
