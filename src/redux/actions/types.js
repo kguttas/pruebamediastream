@@ -1,0 +1,3 @@
+/* Movies */
+export const GET_MOVIE_POPULAR = "GET_MOVIE_POPULAR";
+export const GET_MOVIE_REVIEWS = "GET_MOVIE_REVIEWS";
