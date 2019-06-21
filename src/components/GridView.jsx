@@ -107,7 +107,7 @@ export default class GridView extends Component {
                                     Detalles
                                 </Button>
 
-                                <Button disabled={this.props.hiddenActionColumn} data-for={"btnAddFav_" + row.id} data-tip={"Agregar a favoritos " +  row.title} color="warning" onClick={(e) => { 
+                                <Button hidden={this.props.hiddenActionColumn} data-for={"btnAddFav_" + row.id} data-tip={"Agregar a favoritos " +  row.title} color="warning" onClick={(e) => { 
                                     
                                     const movie = this.props.movies.filter((item) => {
                                         if(item.id === row.id) return item;
